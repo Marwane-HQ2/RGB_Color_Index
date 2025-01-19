@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>RGB Colors index</title></head>
+<body><style>.c{width: 70px;height:18px; font-size: 0.5rem;}.c:hover{transform: scale(300%);cursor: pointer;}#colors{display: flex;margin: auto;padding: 2% 8%;}
+* {text-align: center; transition: 20ms ease-in; font-family: 'Courier New', Courier, monospace;}
+button {
+    padding: 3px 6px;
+}
+</style>
+<h1>RGB Colors index</h1><button onclick="c()">Display colors</button><div id="colors"></div>
+    <script>
+        function c() {
+            let divc=document.getElementById('colors')
+            for (let r=0;r<256;r+=16) {
+                let q=document.createElement('div')
+                    q.classList.add('r')
+                    divc.appendChild(q)
+                for (let g=0;g<256;g+=16) {
+                    let p=document.createElement('div')
+                    p.classList.add('s')
+                    q.appendChild(p)
+                    for (let b=0;b<256;b+=16) {
+                        let a=document.createElement('div')
+                        let col=`rgb(${r},${g},${b})`
+                        a.style.backgroundColor=col
+                        a.classList.add('c')
+                        a.onclick = () => { document.body.style.backgroundColor = col}
+                        a.innerText= col
+                        p.appendChild(a)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
